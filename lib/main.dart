@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:tasks/screens/tasks_screen.dart';
+import 'package:videos/screens/todo_list.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key); 
+  const MyApp({super.key});
 
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Tasks App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: TasksScreen(),
+      title: 'Mobile',
+      theme: ThemeData.dark(),
+      home: TodoListPage(),
     );
   }
 }
