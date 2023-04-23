@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'package:videos/services/todo_service.dart';
 import 'package:videos/utils/snackbar_helper.dart';
 
 class AddTodoPage extends StatefulWidget {
@@ -64,27 +64,13 @@ class _AddTodoPageState extends State<AddTodoPage> {
   Future<void> updateData() async {
     final todo = widget.todo;
     if (todo == null) {
-      print('You can not call updated without todo data');
       return;
     }
     final id = todo['_id'];
     //final isCompleted = todo['is_completed'];
-    final title = titleController.text;
-    final description = descriptionController.text;
-    final body = {
-      "title": title,
-      "description": description,
-      "is_completed": false,
-    };
+    final isSuccess = await TodoService.updateTodo(id, body);
 
-    final url = 'https://api.nstack.in/v1/todos/$id';
-    final uri = Uri.parse(url);
-    final response = await http.put(
-      uri,
-      body: jsonEncode(body),
-      headers: {'Content-Type': 'application/json'},
-    );
-    if (response.statusCode == 200) {
+    if (isSuccess) {
       showSuccessMessage(context, message: 'Updation success');
     } else {
       showErrorMessage(context, message: 'Updation failed');
@@ -92,24 +78,24 @@ class _AddTodoPageState extends State<AddTodoPage> {
   }
 
   Future<void> submitData() async {
-    final title = titleController.text;
-    final description = descriptionController.text;
-    final body = {
-      "title": title,
-      "description": description,
-      "is_completed": false,
-    };
-    final url = 'https://api.nstack.in/v1/todos';
-    final uri = Uri.parse(url);
-    final response = await http.post(uri,
-        body: jsonEncode(body), headers: {'Content-Type': 'application/json'});
-    if (response.statusCode == 201) {
+    final isSuccess = await TodoService.addTodo(body);
+
+    if (isSuccess) {
       titleController.text = '';
       descriptionController.text = '';
-      print('Creation success');
       showSuccessMessage(context, message: 'CreationSuccess');
     } else {
       showErrorMessage(context, message: 'Creation failed');
     }
+  }
+
+  Map get body {
+    final title = titleController.text;
+    final description = descriptionController.text;
+    return {
+      "title": title,
+      "description": description,
+      "is_completed": false,
+    };
   }
 }
