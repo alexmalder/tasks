@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tasks/models/task.dart';
+import 'package:videos/models/task.dart';
 
 class TasksScreen extends StatelessWidget {
   TasksScreen({Key? key}) : super(key: key);
