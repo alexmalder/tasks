@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:videos/models/task.dart';
 
-class TasksScreen extends StatelessWidget {
-  TasksScreen({Key? key}) : super(key: key);
+class TasksScreen extends StatefulWidget {
+  const TasksScreen({Key? key}) : super(key: key);
+
+  @override
+  State<TasksScreen> createState() => _TasksScreenState();
+}
+
+class _TasksScreenState extends State<TasksScreen> {
   List<Task> tasksList = [
     Task(title: "1"),
     Task(title: "2"),
@@ -28,15 +34,15 @@ class TasksScreen extends StatelessWidget {
               ),
             ),
           ),
-        
+
           Expanded(
-            child: ListView.builder( 
+            child: ListView.builder(
               itemCount: tasksList.length,
               itemBuilder: (context, index) {
                 var task = tasksList[index];
-                return ListTile( 
+                return ListTile(
                   title: Text(task.title),
-                  trailing: Checkbox( 
+                  trailing: Checkbox(
                     value: task.isDone,
                     onChanged: (value) {},
                   ),

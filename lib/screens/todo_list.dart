@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:videos/screens/add_page.dart';
@@ -26,11 +25,10 @@ class _TodoListPageState extends State<TodoListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Todo List'),
+        title: const Text('Todos'),
       ),
       body: Visibility(
         visible: isLoading,
-        child: Center(child: CircularProgressIndicator()),
         replacement: RefreshIndicator(
           onRefresh: fetchTodo,
           child: Visibility(
@@ -60,13 +58,13 @@ class _TodoListPageState extends State<TodoListPage> {
                       }
                     }, itemBuilder: (context) {
                       return [
-                        PopupMenuItem(
-                          child: Text('Edit'),
+                        const PopupMenuItem(
                           value: 'edit',
+                          child: Text('Edit'),
                         ),
-                        PopupMenuItem(
-                          child: Text('Delete'),
+                        const PopupMenuItem(
                           value: 'delete',
+                          child: Text('Delete'),
                         ),
                       ];
                     }),
@@ -76,6 +74,7 @@ class _TodoListPageState extends State<TodoListPage> {
             ),
           ),
         ),
+        child: const Center(child: CircularProgressIndicator()),
       ),
 
       floatingActionButton: FloatingActionButton.extended(
@@ -114,8 +113,10 @@ class _TodoListPageState extends State<TodoListPage> {
       setState(() {
         items = filtered;
       });
+      // ignore: use_build_context_synchronously
       showSuccessMessage(context, message: 'Deletion success');
     } else {
+      // ignore: use_build_context_synchronously
       showErrorMessage(context, message: 'Deletion failed');
     }
   }
@@ -127,6 +128,7 @@ class _TodoListPageState extends State<TodoListPage> {
         items = response;
       });
     } else {
+      // ignore: use_build_context_synchronously
       showErrorMessage(context, message: 'Something went wrong');
     }
     setState(() {

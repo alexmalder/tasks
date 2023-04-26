@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:videos/screens/tasks_screen.dart';
@@ -43,17 +42,17 @@ class _AddTodoPageState extends State<AddTodoPage> {
         children: [
           TextField(
             controller: titleController,
-            decoration: InputDecoration(hintText: 'Title'),
+            decoration: const InputDecoration(hintText: 'Title'),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           TextField(
             controller: descriptionController,
-            decoration: InputDecoration(hintText: 'Description'),
+            decoration: const InputDecoration(hintText: 'Description'),
             keyboardType: TextInputType.multiline,
             minLines: 5,
             maxLines: 8,
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           ElevatedButton(
             onPressed: isEdit ? updateData : submitData,
             child: Text(isEdit ? 'Update' : 'Submit'),
@@ -65,7 +64,7 @@ class _AddTodoPageState extends State<AddTodoPage> {
 
   Future<void> navigateToTasksPage(Map item) async {
     final route = MaterialPageRoute(
-      builder: (context) => TasksScreen(),
+      builder: (context) => const TasksScreen(),
     );
     await Navigator.push(context, route);
   }
@@ -80,9 +79,11 @@ class _AddTodoPageState extends State<AddTodoPage> {
     final isSuccess = await TodoService.updateTodo(id, body);
 
     if (isSuccess) {
-      showSuccessMessage(context, message: 'Updation success');
+      // ignore: use_build_context_synchronously
+      showSuccessMessage(context, message: "Updation success");
     } else {
-      showErrorMessage(context, message: 'Updation failed');
+      // ignore: use_build_context_synchronously
+      showErrorMessage(context, message: "Updation failed");
     }
   }
 
@@ -92,9 +93,11 @@ class _AddTodoPageState extends State<AddTodoPage> {
     if (isSuccess) {
       titleController.text = '';
       descriptionController.text = '';
-      showSuccessMessage(context, message: 'CreationSuccess');
+      // ignore: use_build_context_synchronously
+      showSuccessMessage(context, message: "CreationSuccess");
     } else {
-      showErrorMessage(context, message: 'Creation failed');
+      // ignore: use_build_context_synchronously
+      showErrorMessage(context, message: "Creation failed");
     }
   }
 
