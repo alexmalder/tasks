@@ -36,7 +36,7 @@ class _AddTodoPageState extends State<AddTodoPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(isEdit ? 'Edit Todo' : 'Add Todo'),
-      ), // AppBar
+      ),
       body: ListView(
         padding: const EdgeInsets.all(20),
         children: [
@@ -62,11 +62,8 @@ class _AddTodoPageState extends State<AddTodoPage> {
     );
   }
 
-  Future<void> navigateToTasksPage(Map item) async {
-    final route = MaterialPageRoute(
-      builder: (context) => const TasksScreen(),
-    );
-    await Navigator.push(context, route);
+  Future<void> navigateToTasksPage() async {
+    Navigator.pop(context);
   }
 
   Future<void> updateData() async {
@@ -81,6 +78,7 @@ class _AddTodoPageState extends State<AddTodoPage> {
     if (isSuccess) {
       // ignore: use_build_context_synchronously
       showSuccessMessage(context, message: "Updation success");
+      await navigateToTasksPage();
     } else {
       // ignore: use_build_context_synchronously
       showErrorMessage(context, message: "Updation failed");
@@ -95,6 +93,7 @@ class _AddTodoPageState extends State<AddTodoPage> {
       descriptionController.text = '';
       // ignore: use_build_context_synchronously
       showSuccessMessage(context, message: "CreationSuccess");
+      await navigateToTasksPage();
     } else {
       // ignore: use_build_context_synchronously
       showErrorMessage(context, message: "Creation failed");
