@@ -1,7 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:videos/screens/add_page.dart';
-import 'package:videos/services/todo_service.dart';
+import 'package:videos/services/sin_service.dart';
 import 'package:videos/utils/snackbar_helper.dart';
 
 class TodoListPage extends StatefulWidget {
@@ -18,19 +17,20 @@ class _TodoListPageState extends State<TodoListPage> {
   @override
   void initState() {
     super.initState();
-    fetchTodo();
+    fetchSin();
+    //fetchSins();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Todos'),
+        title: const Text('Global Sins'),
       ),
       body: Visibility(
         visible: isLoading,
         replacement: RefreshIndicator(
-          onRefresh: fetchTodo,
+          onRefresh: fetchSin,
           child: Visibility(
             visible: items.isNotEmpty,
             replacement: Center(
@@ -42,13 +42,19 @@ class _TodoListPageState extends State<TodoListPage> {
               itemCount: items.length,
               padding: const EdgeInsets.all(8),
               itemBuilder: (context, index) {
-                final item = items[index] as Map;
-                final id = item['_id'] as String;
+                final item = items[index] as List;
+                print(item);
+                String id;
+                if (item.isEmpty) {
+                  id = "";
+                } else {
+                  id = item[0] as String;
+                }
                 return Card(
                   child: ListTile(
                     leading: CircleAvatar(child: Text('${index + 1}')),
-                    title: Text(item['title']),
-                    subtitle: Text(item['description']),
+                    title: Text(item[1]),
+                    subtitle: Text(item[2]),
                     trailing: PopupMenuButton(onSelected: (value) {
                       if (value == "edit") {
                         navigateToEditPage(item);
@@ -79,12 +85,12 @@ class _TodoListPageState extends State<TodoListPage> {
 
       floatingActionButton: FloatingActionButton.extended(
         onPressed: navigateToAddPage,
-        label: const Text('Add Todo'),
+        label: const Text('Add Sin'),
       ), //FloatingActionButton.extended
     ); // Scaffold
   }
 
-  Future<void> navigateToEditPage(Map item) async {
+  Future<void> navigateToEditPage(List item) async {
     final route = MaterialPageRoute(
       builder: (context) => AddTodoPage(todo: item),
     );
@@ -92,7 +98,7 @@ class _TodoListPageState extends State<TodoListPage> {
     setState(() {
       isLoading = true;
     });
-    fetchTodo();
+    fetchSin();
   }
 
   Future<void> navigateToAddPage() async {
@@ -103,13 +109,13 @@ class _TodoListPageState extends State<TodoListPage> {
     setState(() {
       isLoading = true;
     });
-    fetchTodo();
+    fetchSin();
   }
 
   Future<void> deleteById(String id) async {
-    final isSuccess = await TodoService.deleteById(id);
+    final isSuccess = await SinService.deleteById(id);
     if (isSuccess) {
-      final filtered = items.where((element) => element['_id'] != id).toList();
+      final filtered = items.where((element) => element[0] != id).toList();
       setState(() {
         items = filtered;
       });
@@ -121,11 +127,12 @@ class _TodoListPageState extends State<TodoListPage> {
     }
   }
 
-  Future<void> fetchTodo() async {
-    final response = await TodoService.fetchTodos();
+  Future<void> fetchSin() async {
+    final response = await SinService.fetchSins();
     if (response != null) {
       setState(() {
-        items = response;
+        items = response[0];
+        //if (response.isNotEmpty) { } else { items = []; }
       });
     } else {
       // ignore: use_build_context_synchronously
@@ -135,4 +142,5 @@ class _TodoListPageState extends State<TodoListPage> {
       isLoading = false;
     });
   }
+
 }

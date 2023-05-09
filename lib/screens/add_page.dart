@@ -1,11 +1,10 @@
 
 import 'package:flutter/material.dart';
-import 'package:videos/screens/tasks_screen.dart';
-import 'package:videos/services/todo_service.dart';
+import 'package:videos/services/sin_service.dart';
 import 'package:videos/utils/snackbar_helper.dart';
 
 class AddTodoPage extends StatefulWidget {
-  final Map? todo;
+  final List? todo;
   const AddTodoPage({super.key, this.todo});
 
   @override
@@ -24,8 +23,8 @@ class _AddTodoPageState extends State<AddTodoPage> {
     final todo = widget.todo;
     if (todo != null) {
       isEdit = true;
-      final title = todo['title'];
-      final description = todo['description'];
+      final title = todo[1];
+      final description = todo[2];
       titleController.text = title;
       descriptionController.text = description;
     }
@@ -71,9 +70,9 @@ class _AddTodoPageState extends State<AddTodoPage> {
     if (todo == null) {
       return;
     }
-    final id = todo['_id'];
+    final id = todo[0];
     //final isCompleted = todo['is_completed'];
-    final isSuccess = await TodoService.updateTodo(id, body);
+    final isSuccess = await SinService.updateSin(id, body);
 
     if (isSuccess) {
       // ignore: use_build_context_synchronously
@@ -86,7 +85,7 @@ class _AddTodoPageState extends State<AddTodoPage> {
   }
 
   Future<void> submitData() async {
-    final isSuccess = await TodoService.addTodo(body);
+    final isSuccess = await SinService.addSin(body);
 
     if (isSuccess) {
       titleController.text = '';
