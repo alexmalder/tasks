@@ -17,20 +17,20 @@ class _TodoListPageState extends State<TodoListPage> {
   @override
   void initState() {
     super.initState();
-    fetchSin();
-    //fetchSins();
+    fetchArtifact();
+    //fetchArtifacts();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Global Sins'),
+        title: const Text('Global Artifacts'),
       ),
       body: Visibility(
         visible: isLoading,
         replacement: RefreshIndicator(
-          onRefresh: fetchSin,
+          onRefresh: fetchArtifact,
           child: Visibility(
             visible: items.isNotEmpty,
             replacement: Center(
@@ -84,7 +84,7 @@ class _TodoListPageState extends State<TodoListPage> {
 
       floatingActionButton: FloatingActionButton.extended(
         onPressed: navigateToAddPage,
-        label: const Text('Add Sin'),
+        label: const Text('Add Artifact'),
       ), //FloatingActionButton.extended
     ); // Scaffold
   }
@@ -97,7 +97,7 @@ class _TodoListPageState extends State<TodoListPage> {
     setState(() {
       isLoading = true;
     });
-    fetchSin();
+    fetchArtifact();
   }
 
   Future<void> navigateToAddPage() async {
@@ -108,11 +108,11 @@ class _TodoListPageState extends State<TodoListPage> {
     setState(() {
       isLoading = true;
     });
-    fetchSin();
+    fetchArtifact();
   }
 
   Future<void> deleteById(String id) async {
-    final isSuccess = await SinService.deleteById(id);
+    final isSuccess = await ArtifactService.deleteById(id);
     if (isSuccess) {
       final filtered = items.where((element) => element[0] != id).toList();
       setState(() {
@@ -126,8 +126,8 @@ class _TodoListPageState extends State<TodoListPage> {
     }
   }
 
-  Future<void> fetchSin() async {
-    final response = await SinService.fetchSins();
+  Future<void> fetchArtifact() async {
+    final response = await ArtifactService.fetchArtifacts();
     if (response != null) {
       setState(() {
         items = response[0];

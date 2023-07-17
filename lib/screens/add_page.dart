@@ -72,7 +72,7 @@ class _AddTodoPageState extends State<AddTodoPage> {
     }
     final id = todo[0];
     //final isCompleted = todo['is_completed'];
-    final isSuccess = await SinService.updateSin(id, body);
+    final isSuccess = await ArtifactService.updateArtifact(id, body);
 
     if (isSuccess) {
       // ignore: use_build_context_synchronously
@@ -85,7 +85,7 @@ class _AddTodoPageState extends State<AddTodoPage> {
   }
 
   Future<void> submitData() async {
-    final isSuccess = await SinService.addSin(body);
+    final isSuccess = await ArtifactService.addArtifact(body);
 
     if (isSuccess) {
       titleController.text = '';

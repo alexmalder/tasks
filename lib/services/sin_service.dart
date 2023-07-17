@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 // all todo api calls
-class SinService {
+class ArtifactService {
   static Future<bool> deleteById(String id) async {
     // Delete the item
     final url = 'https://api.vnmntn.com/api/sins?id=$id';
@@ -12,7 +12,7 @@ class SinService {
     return response.statusCode == 200;
   }
 
-  static Future<List?> fetchSins() async {
+  static Future<List?> fetchArtifacts() async {
     const url = 'https://api.vnmntn.com/api/sins';
     final uri = Uri.parse(url);
     final response = await http.get(uri);
@@ -24,7 +24,7 @@ class SinService {
     }
   }
 
-  static Future<bool> updateSin(String id, Map body) async {
+  static Future<bool> updateArtifact(String id, Map body) async {
     final url = 'https://api.vnmntn.com/api/sins?id=$id';
     final uri = Uri.parse(url);
     final response = await http.put(
@@ -35,7 +35,7 @@ class SinService {
     return response.statusCode == 200;
   }
 
-  static Future<bool> addSin(Map body) async {
+  static Future<bool> addArtifact(Map body) async {
     const url = 'https://api.vnmntn.com/api/sins';
     final uri = Uri.parse(url);
     final response = await http.post(uri,
