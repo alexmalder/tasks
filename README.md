@@ -17,5 +17,15 @@ samples, guidance on mobile development, and a full API reference.
 
 ## TODO
 
+- [ ] dio
+- [ ] sentry_flutter
+- [ ] sentry_dio
+- [ ] uuid
+- [ ] flutter_dotenv
+- [ ] flutter_launcher_icons
 - [ ] cubit states
 - [ ] bloc
+
+## Authors
+
+<vnmntn@mail.ru>
