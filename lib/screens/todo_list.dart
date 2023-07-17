@@ -43,7 +43,6 @@ class _TodoListPageState extends State<TodoListPage> {
               padding: const EdgeInsets.all(8),
               itemBuilder: (context, index) {
                 final item = items[index] as List;
-                print(item);
                 String id;
                 if (item.isEmpty) {
                   id = "";
