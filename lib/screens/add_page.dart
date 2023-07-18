@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:videos/services/sin_service.dart';
+import 'package:videos/services/artifact_service.dart';
 import 'package:videos/utils/snackbar_helper.dart';
 
 class AddTodoPage extends StatefulWidget {
