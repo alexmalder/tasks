@@ -4,7 +4,7 @@ import 'package:videos/services/artifact_service.dart';
 import 'package:videos/utils/snackbar_helper.dart';
 
 class AddTodoPage extends StatefulWidget {
-  final List? todo;
+  final Map? todo;
   const AddTodoPage({super.key, this.todo});
 
   @override
@@ -23,8 +23,8 @@ class _AddTodoPageState extends State<AddTodoPage> {
     final todo = widget.todo;
     if (todo != null) {
       isEdit = true;
-      final title = todo[1];
-      final description = todo[2];
+      final title = todo['title'];
+      final description = todo['description'];
       titleController.text = title;
       descriptionController.text = description;
     }

@@ -1,3 +1,6 @@
+import 'dart:ffi';
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:videos/screens/add_page.dart';
 import 'package:videos/services/artifact_service.dart';
@@ -42,18 +45,13 @@ class _TodoListPageState extends State<TodoListPage> {
               itemCount: items.length,
               padding: const EdgeInsets.all(8),
               itemBuilder: (context, index) {
-                final item = items[index] as List;
-                String id;
-                if (item.isEmpty) {
-                  id = "";
-                } else {
-                  id = item[0] as String;
-                }
+                final item = items[index] as Map;
+                int id = item['ID'] as int;
                 return Card(
                   child: ListTile(
                     leading: CircleAvatar(child: Text('${index + 1}')),
-                    title: Text(item[1]),
-                    subtitle: Text(item[2]),
+                    title: Text(item['title']),
+                    subtitle: Text(item['description']),
                     trailing: PopupMenuButton(onSelected: (value) {
                       if (value == "edit") {
                         navigateToEditPage(item);
@@ -89,7 +87,7 @@ class _TodoListPageState extends State<TodoListPage> {
     ); // Scaffold
   }
 
-  Future<void> navigateToEditPage(List item) async {
+  Future<void> navigateToEditPage(Map item) async {
     final route = MaterialPageRoute(
       builder: (context) => AddTodoPage(todo: item),
     );
@@ -111,10 +109,10 @@ class _TodoListPageState extends State<TodoListPage> {
     fetchArtifact();
   }
 
-  Future<void> deleteById(String id) async {
+  Future<void> deleteById(int id) async {
     final isSuccess = await ArtifactService.deleteById(id);
     if (isSuccess) {
-      final filtered = items.where((element) => element[0] != id).toList();
+      final filtered = items.where((element) => element['ID'] != id).toList();
       setState(() {
         items = filtered;
       });
@@ -130,7 +128,7 @@ class _TodoListPageState extends State<TodoListPage> {
     final response = await ArtifactService.fetchArtifacts();
     if (response != null) {
       setState(() {
-        items = response[0];
+        items = response;
         //if (response.isNotEmpty) { } else { items = []; }
       });
     } else {

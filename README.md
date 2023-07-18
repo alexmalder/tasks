@@ -17,14 +17,14 @@ samples, guidance on mobile development, and a full API reference.
 
 ## TODO
 
-- [ ] dio
-- [ ] sentry_flutter
+- [x] dio
+- [?] sentry_flutter
+    - await SentryFlutter init in main
 - [ ] sentry_dio
-- [ ] uuid
-- [ ] flutter_dotenv
+- [x] uuid
+- [x] flutter_dotenv
 - [ ] flutter_launcher_icons
-- [ ] cubit states
-- [ ] bloc
+- [ ] cubit states & bloc
 
 ## Authors
 
