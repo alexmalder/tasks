@@ -18,7 +18,6 @@ class AppHttpClient {
         'Content-Type': 'application/json',
         'TraceId': _getClientTraceId(),
         'Accept': 'application/json',
-        'version': 'v2',
       },
     ));
 
@@ -39,7 +38,7 @@ class AppHttpClient {
   }
 
   Future<String?> _getClientTraceId() async {
-    final _traceId = (const Uuid().v4().hashCode).toString();
-    return _traceId;
+    final traceId = (const Uuid().v4().hashCode).toString();
+    return traceId;
   }
 }

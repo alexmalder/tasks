@@ -1,6 +1,4 @@
 import 'dart:convert';
-import 'dart:ffi';
-import 'package:dio/dio.dart';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:videos/services/dio_wrapper.dart';
@@ -24,7 +22,6 @@ class ArtifactService {
       //final data = responseDecoded['data'] as List;
       //return data;
       final List<dynamic> data = responseDecoded['data'];
-      print(data);
       return data;
 
     } else {
