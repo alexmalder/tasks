@@ -7,6 +7,7 @@ import 'package:uuid/uuid.dart';
 
 class AppHttpClient {
   late Dio _dio;
+  final String _traceId = const Uuid().v4().toString();
 
   Dio get dio => _dio;
 
@@ -16,7 +17,7 @@ class AppHttpClient {
       contentType: 'application/json',
       headers: <String, dynamic>{
         'Content-Type': 'application/json',
-        'TraceId': _getClientTraceId(),
+        'X-Request-Id': _traceId,
         'Accept': 'application/json',
       },
     ));
@@ -35,10 +36,6 @@ class AppHttpClient {
         SentryStatusCode(500),
       ],
     );
-  }
-
-  Future<String?> _getClientTraceId() async {
-    final traceId = (const Uuid().v4().hashCode).toString();
-    return traceId;
+    Sentry.configureScope((scope) => scope.setTag('X-Request-Id', _traceId));
   }
 }
