@@ -1,0 +1,13 @@
+---
+kind: pipeline
+type: exec
+name: default
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: build
+  commands:
+    - docker build -f ./.Dockerfile . -t tasks:0.1
