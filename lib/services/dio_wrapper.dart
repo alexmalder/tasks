@@ -23,9 +23,11 @@ class AppHttpClient {
     ));
 
     // debug logs interceptor
+    /*
     _dio.interceptors.add(
       LogInterceptor(requestBody: true, responseBody: true),
     );
+    */
 
     _dio.addSentry(
       failedRequestStatusCodes: [

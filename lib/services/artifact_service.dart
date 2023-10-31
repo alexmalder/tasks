@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:videos/models/artifact.dart';
 import 'package:videos/services/dio_wrapper.dart';
 //import 'package:videos/models/task.dart';
 
@@ -26,6 +27,17 @@ class ArtifactService {
 
     } else {
       return null;
+    }
+  }
+
+  static Future<Artifact> fetchArtifact() async {
+    final apiUri = dotenv.env['API_URI'];
+    final url = '$apiUri/albums/1';
+    final response = await AppHttpClient().dio.get(url);
+    if (response.statusCode == 200) {
+      return Artifact.fromJson(response.data);
+    } else {
+      throw Exception('Failed to load album');
     }
   }
 
