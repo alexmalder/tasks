@@ -18,9 +18,8 @@ samples, guidance on mobile development, and a full API reference.
 ## TODO
 
 - [x] dio
-- [?] sentry_flutter
-    - await SentryFlutter init in main
-- [ ] sentry_dio
+- [x] sentry_flutter
+- [x] sentry_dio
 - [x] uuid
 - [x] flutter_dotenv
 - [ ] flutter_launcher_icons

@@ -71,7 +71,6 @@ class _AddTodoPageState extends State<AddTodoPage> {
       return;
     }
     final id = todo[0];
-    //final isCompleted = todo['is_completed'];
     final isSuccess = await ArtifactService.updateArtifact(id, body);
 
     if (isSuccess) {
