@@ -24,7 +24,6 @@ class ArtifactService {
       //return data;
       final List<dynamic> data = responseDecoded['data'];
       return data;
-
     } else {
       return null;
     }

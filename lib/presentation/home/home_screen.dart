@@ -34,7 +34,6 @@ class _HomeScreenState extends State<HomeScreen> {
               if (snapshot.hasData) {
                 return Text(snapshot.data!.title);
               } else if (snapshot.hasError) {
-                print(snapshot.error.toString());
                 Sentry.captureMessage(snapshot.error.toString());
               }
               return const CircularProgressIndicator();
