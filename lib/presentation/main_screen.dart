@@ -1,5 +1,5 @@
 import 'package:videos/controller/navigation_cubit.dart';
-import 'package:videos/presentation/shared/named_nav_bar_item_widget.dart';
+import 'package:videos/presentation/named_nav_bar_item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
