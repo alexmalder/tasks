@@ -9,11 +9,7 @@
 
 ## how to find tasks
 
-```bash
-grep -r "@task" lib | sed 's/.*\/\/ @task //g' | sort
-```
-
-Format of the task in comment
+## Comment format
 
 ```dart
 // @task get new list[widget]
@@ -21,6 +17,21 @@ Format of the task in comment
 ^  ^ tag of the comment[task]
 ^ comment
 ```
+
+## Find pipeline
+
+```bash
+grep -r "@task" lib | sed 's/.*\/\/ @task /- [ ] /g' | sort
+```
+
+## Example
+
+- [ ] need alert when sign-in succeed[widget]
+- [ ] need id required parameter[widget]
+- [ ] need render list[widget]
+- [ ] need sign-in page[screen]
+- [ ] test signIn and signUp methods[api calls]
+- [ ] test toJson method[model]
 
 ## Authors
 
