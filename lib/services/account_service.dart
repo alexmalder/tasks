@@ -5,17 +5,17 @@ import 'package:videos/models/artifact.dart';
 import 'package:videos/services/dio_wrapper.dart';
 
 // all todo api calls
-class ArtifactService {
+class AccountService {
   static Future<bool> deleteById(int id) async {
     final apiUri = dotenv.env['API_URI'];
-    final url = '$apiUri/api/artifacts/$id';
+    final url = '$apiUri/api/accounts/$id';
     final response = await AppHttpClient().dio.delete(url);
     return response.statusCode == 200;
   }
 
   static Future<List?> fetch() async {
     final apiUri = dotenv.env['API_URI'];
-    final url = '$apiUri/api/artifacts';
+    final url = '$apiUri/api/accounts';
     final response = await AppHttpClient().dio.get(url);
     final Map<String, dynamic> responseDecoded = response.data;
     if (response.statusCode == 200) {

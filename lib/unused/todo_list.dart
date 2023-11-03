@@ -122,7 +122,7 @@ class _TodoListPageState extends State<TodoListPage> {
   }
 
   Future<void> fetchArtifact() async {
-    final response = await ArtifactService.fetchArtifacts();
+    final response = await ArtifactService.fetch();
     if (response != null) {
       setState(() {
         items = response;

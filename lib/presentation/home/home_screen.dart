@@ -16,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    futureArtifact = ArtifactService.fetchArtifact();
+    futureArtifact = ArtifactService.fetchOne();
   }
 
   @override
