@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:dio/dio.dart';
 import 'package:sentry_dio/sentry_dio.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
@@ -23,9 +21,11 @@ class AppHttpClient {
     ));
 
     // debug logs interceptor
+    /*
     _dio.interceptors.add(
       LogInterceptor(requestBody: true, responseBody: true),
     );
+    */
 
     _dio.addSentry(
       failedRequestStatusCodes: [

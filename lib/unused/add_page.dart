@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:videos/services/artifact_service.dart';
 import 'package:videos/utils/snackbar_helper.dart';
@@ -71,8 +70,7 @@ class _AddTodoPageState extends State<AddTodoPage> {
       return;
     }
     final id = todo[0];
-    //final isCompleted = todo['is_completed'];
-    final isSuccess = await ArtifactService.updateArtifact(id, body);
+    final isSuccess = await ArtifactService.update(id, body);
 
     if (isSuccess) {
       // ignore: use_build_context_synchronously
@@ -85,7 +83,7 @@ class _AddTodoPageState extends State<AddTodoPage> {
   }
 
   Future<void> submitData() async {
-    final isSuccess = await ArtifactService.addArtifact(body);
+    final isSuccess = await ArtifactService.add(body);
 
     if (isSuccess) {
       titleController.text = '';

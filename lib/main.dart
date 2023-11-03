@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:videos/screens/todo_list.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:videos/app/routes/app_routes.dart';
 
 Future main() async {
   await dotenv.load(fileName: ".env");
@@ -30,10 +30,26 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    return MaterialApp.router(
+      routeInformationProvider: AppRouter.router.routeInformationProvider,
+      routeInformationParser: AppRouter.router.routeInformationParser,
+      routerDelegate: AppRouter.router.routerDelegate,
+      title: 'Go Router',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+          primarySwatch: Colors.blue,
+          scaffoldBackgroundColor: Colors.black,
+          colorScheme: const ColorScheme.dark(),
+      ),
+    );
+
+    /*
     return MaterialApp(
       title: 'Mobile',
       theme: ThemeData.dark(),
       home: const TodoListPage(),
     );
+    */
   }
 }
+

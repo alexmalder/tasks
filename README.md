@@ -1,30 +1,19 @@
 # videos
 
-A new Flutter project.
+## routing
 
-## Getting Started
+- [ ] add sign in with routing
+- [ ] add feed from api homepage
+- [ ] add profile details from api
+- [ ] add fake settings from api
 
-This project is a starting point for a Flutter application.
+## workaround
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
-## TODO
-
-- [x] dio
-- [?] sentry_flutter
-    - await SentryFlutter init in main
-- [ ] sentry_dio
-- [x] uuid
-- [x] flutter_dotenv
-- [ ] flutter_launcher_icons
-- [ ] cubit states & bloc
+- home screen has list
+- home details has item
+- settings has sign-in page
+- alert when sign-in successed
+- some pages and redirects
 
 ## Authors
 

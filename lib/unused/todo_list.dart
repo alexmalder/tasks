@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:videos/screens/add_page.dart';
+import 'package:videos/unused/add_page.dart';
 import 'package:videos/services/artifact_service.dart';
 import 'package:videos/utils/snackbar_helper.dart';
 
@@ -122,7 +122,7 @@ class _TodoListPageState extends State<TodoListPage> {
   }
 
   Future<void> fetchArtifact() async {
-    final response = await ArtifactService.fetchArtifacts();
+    final response = await ArtifactService.fetch();
     if (response != null) {
       setState(() {
         items = response;
