@@ -9,10 +9,10 @@
 
 ## workaround
 
-- home screen has list
-- home details has item
-- settings has sign-in page
-- alert when sign-in successed
+- home screen render list
+- home details render item
+- settings render sign-in page
+- alert when sign-in succeed
 - some pages and redirects
 
 ## Authors
