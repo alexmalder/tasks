@@ -17,8 +17,8 @@ Format of the task in comment
 
 ```dart
 // @task get new list[widget]
-^--^-----------------^ tag of the task
-^--^ tag of the comment[task]
+^  ^                 ^ tag of the task
+^  ^ tag of the comment[task]
 ^ comment
 ```
 
