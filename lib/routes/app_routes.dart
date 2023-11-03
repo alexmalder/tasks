@@ -1,15 +1,15 @@
 import 'package:videos/controller/navigation_cubit.dart';
-import 'package:videos/presentation/home_details_screen.dart';
-import 'package:videos/presentation/home_screen.dart';
-import 'package:videos/presentation/main_screen.dart';
-import 'package:videos/presentation/profile_details_screen.dart';
-import 'package:videos/presentation/profile_screen.dart';
-import 'package:videos/presentation/settings_screen.dart';
+import 'package:videos/screens//home_details_screen.dart';
+import 'package:videos/screens/home_screen.dart';
+import 'package:videos/screens/main_screen.dart';
+import 'package:videos/screens/profile_details_screen.dart';
+import 'package:videos/screens/profile_screen.dart';
+import 'package:videos/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../../core/utils/constants.dart';
-import '../../presentation/not_found_page.dart';
+import '../../screens/not_found_page.dart';
 
 class AppRouter {
 
