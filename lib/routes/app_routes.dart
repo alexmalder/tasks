@@ -8,7 +8,7 @@ import 'package:videos/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import '../../core/utils/constants.dart';
+import '../core/constants.dart';
 import '../../screens/not_found_page.dart';
 
 class AppRouter {
