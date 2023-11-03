@@ -11,7 +11,7 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-// @task need render list
+// @task need render list[widget]
 class _HomeScreenState extends State<HomeScreen> {
   late Future<Artifact> futureArtifact;
 

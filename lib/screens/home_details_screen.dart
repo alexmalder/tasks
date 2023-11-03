@@ -10,7 +10,7 @@ class HomeDetailsScreen extends StatefulWidget {
   State<HomeDetailsScreen> createState() => _HomeDetailsScreen();
 }
 
-// @task need id required parameter
+// @task need id required parameter[widget]
 class _HomeDetailsScreen extends State<HomeDetailsScreen> {
   late Future<Artifact> futureArtifact;
 

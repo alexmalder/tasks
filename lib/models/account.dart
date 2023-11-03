@@ -19,7 +19,7 @@ class Account {
     );
   }
 
-  // @task test toJson method
+  // @task test toJson method[model]
   Map<String, dynamic> toJson() => {
     'id': id,
     'username': username,
