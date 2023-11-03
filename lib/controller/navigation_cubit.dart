@@ -1,4 +1,4 @@
-import 'package:bloc/bloc.dart';
+import 'package:bloc/bloc.dart'; // ignore: depend_on_referenced_packages
 import 'package:equatable/equatable.dart';
 import '../core/utils/constants.dart';
 part 'navigation_state.dart';

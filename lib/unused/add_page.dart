@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:videos/services/artifact_service.dart';
 import 'package:videos/utils/snackbar_helper.dart';

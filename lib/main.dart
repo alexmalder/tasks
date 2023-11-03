@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:videos/screens/todo_list.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:videos/app/routes/app_routes.dart';
