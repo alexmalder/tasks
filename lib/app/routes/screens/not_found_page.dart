@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
+import '../../../core/utils/constants.dart';
 
 class NotFoundScreen extends StatelessWidget {
   const NotFoundScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text(
-        'No Page Found'
-      ),
+    return Center(
+      child: TextButton(
+        onPressed: () {
+          context.go(Routes.homeNamedPage);
+        },
+        child: const Text('Page not found. Press button'),
+      )
     );
   }
 }

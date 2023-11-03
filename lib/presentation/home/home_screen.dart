@@ -21,9 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Fetch Data Example',
-      home: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           title: const Text('Fetch Data Example'),
         ),
@@ -40,7 +38,6 @@ class _HomeScreenState extends State<HomeScreen> {
             },
           ),
         ),
-      ),
-    );
+      );
   }
 }
