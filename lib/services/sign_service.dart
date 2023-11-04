@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:videos/models/SignInResponse.dart';
 import 'package:videos/services/dio_wrapper.dart';
 
 // @task need jwt token storage setter[api]
@@ -17,7 +19,15 @@ class SignService {
         return status! < 415 && status! != 400;
       },
     ));
+    if (response.statusCode == 200) {
+      SignInResponse signInResponse = SignInResponse.fromJson(response.data);
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString('accessToken', signInResponse.accessToken);
+      await prefs.setString('refreshToken', signInResponse.refreshToken);
+      await prefs.setInt('expiresIn', signInResponse.expiresIn);
+      await prefs.setInt('refreshExpiresIn', signInResponse.refreshExpiresIn);
+      return true;
+    }
     return response.statusCode == 200;
-
   }
 }

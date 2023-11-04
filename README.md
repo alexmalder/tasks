@@ -9,12 +9,12 @@
 
 ## microtasks
 
+- [ ] need jwt token storage setter[api]
+- [ ] need jwt token interceptor setter[api]
+- [ ] need render list[widget]
 - [ ] encapsulate sign-in page[routing]
 - [ ] hide password form data[widget]
 - [ ] need id required parameter[widget]
-- [ ] need jwt token interceptor setter[api]
-- [ ] need jwt token storage setter[api]
-- [ ] need render list[widget]
 - [ ] need render single item by id[routing]
 - [ ] test toJson method[model]
 
