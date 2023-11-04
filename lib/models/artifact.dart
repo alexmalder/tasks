@@ -1,19 +1,24 @@
+import 'package:uuid/uuid.dart';
+
 class Artifact {
-  final int userId;
-  final int id;
+  final Uuid id;
+  final Uuid accountId;
+  final String link;
   final String title;
 
   const Artifact({
-    required this.userId,
     required this.id,
+    required this.accountId,
+    required this.link,
     required this.title,
   });
 
   factory Artifact.fromJson(Map<String, dynamic> json) {
     return Artifact(
-      userId: json['userId'] as int,
-      id: json['id'] as int,
+      id: json['id'] as Uuid,
+      accountId: json['account_id'] as Uuid,
       title: json['title'] as String,
+      link: json['link'] as String,
     );
   }
 }

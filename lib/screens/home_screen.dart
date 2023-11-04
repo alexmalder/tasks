@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
+import 'package:uuid/uuid.dart';
 import 'package:videos/models/artifact.dart';
 import 'package:videos/services/artifact_service.dart';
 
@@ -12,13 +13,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 // @task need render list[widget]
+// @task need render single item by id[routing]
 class _HomeScreenState extends State<HomeScreen> {
-  late Future<Artifact> futureArtifact;
+  late Future<List<Artifact>> futureArtifact;
 
   @override
   void initState() {
     super.initState();
-    futureArtifact = ArtifactService.fetchOne();
+    futureArtifact = ArtifactService.fetch();
   }
 
   @override
@@ -27,19 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
         appBar: AppBar(
           title: const Text('Fetch Data Example'),
         ),
-        body: Center(
-          child: FutureBuilder<Artifact>(
-            future: futureArtifact,
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                return Text(snapshot.data!.title);
-              } else if (snapshot.hasError) {
-                Sentry.captureMessage(snapshot.error.toString());
-              }
-              return const CircularProgressIndicator();
-            },
-          ),
-        ),
+        body: Center(),
       );
   }
 }

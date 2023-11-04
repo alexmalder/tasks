@@ -1,47 +1,44 @@
 import 'dart:convert';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:uuid/uuid.dart';
 import 'package:videos/models/artifact.dart';
 import 'package:videos/services/dio_wrapper.dart';
 
-// all todo api calls
 class ArtifactService {
-  static Future<bool> deleteById(int id) async {
-    final apiUri = dotenv.env['API_URI'];
-    final url = '$apiUri/api/artifacts/$id';
-    final response = await AppHttpClient().dio.delete(url);
-    return response.statusCode == 200;
+  static Future<bool> add(Map body) async {
+    const url = '/api/v1/feed';
+    final response = await AppHttpClient().dio.post(url, data: jsonEncode(body));
+    return response.statusCode == 201;
   }
 
-  static Future<List?> fetch() async {
-    final apiUri = dotenv.env['API_URI'];
-    final url = '$apiUri/api/artifacts';
+  static Future<List<Artifact>> fetch() async {
+    const url = '/api/v1/feed';
     final response = await AppHttpClient().dio.get(url);
-    final Map<String, dynamic> responseDecoded = response.data;
     if (response.statusCode == 200) {
-      //final data = responseDecoded['data'] as List;
+      //final Map<String, dynamic> responseDecoded = response.data;
+      //final List<Artifact> data = responseDecoded['data'];
       //return data;
-      final List<dynamic> data = responseDecoded['data'];
-      return data;
+      return json.decode(response.data)['data']
+          .map((data) => Artifact.fromJson(data))
+          .toList();
     } else {
-      return null;
+      throw Exception('Failed to load data');
     }
   }
 
-  static Future<Artifact> fetchOne() async {
-    final apiUri = dotenv.env['API_URI'];
-    final url = '$apiUri/albums/1';
+  static Future<Artifact> fetchOne(Uuid uuid) async {
+    final url = '/v1/feed/$uuid';
     final response = await AppHttpClient().dio.get(url);
     if (response.statusCode == 200) {
       return Artifact.fromJson(response.data);
     } else {
-      throw Exception('Failed to load album');
+      throw Exception('Failed to load data');
     }
   }
 
-  static Future<bool> update(String id, Map body) async {
-    final apiUri = dotenv.env['API_URI'];
-    final url = '$apiUri/api/artifacts/$id';
+  static Future<bool> update(Uuid uuid, Map body) async {
+    final url = '/api/v1/feed/$uuid';
     final response = await AppHttpClient().dio.put(
       url,
       data: jsonEncode(body),
@@ -49,10 +46,9 @@ class ArtifactService {
     return response.statusCode == 200;
   }
 
-  static Future<bool> add(Map body) async {
-    final apiUri = dotenv.env['API_URI'];
-    final url = '$apiUri/api/artifacts';
-    final response = await AppHttpClient().dio.post(url, data: jsonEncode(body));
-    return response.statusCode == 201;
+  static Future<bool> deleteById(Uuid uuid) async {
+    final url = '/api/v1/feed/$uuid';
+    final response = await AppHttpClient().dio.delete(url);
+    return response.statusCode == 200;
   }
 }

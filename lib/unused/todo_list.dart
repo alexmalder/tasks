@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uuid/uuid.dart';
 import 'package:videos/unused/add_page.dart';
 import 'package:videos/services/artifact_service.dart';
 import 'package:videos/unused/snackbar_helper.dart';
@@ -43,7 +44,7 @@ class _TodoListPageState extends State<TodoListPage> {
               padding: const EdgeInsets.all(8),
               itemBuilder: (context, index) {
                 final item = items[index] as Map;
-                int id = item['ID'] as int;
+                // int id = item['ID'] as int;
                 return Card(
                   child: ListTile(
                     leading: CircleAvatar(child: Text('${index + 1}')),
@@ -54,7 +55,7 @@ class _TodoListPageState extends State<TodoListPage> {
                         navigateToEditPage(item);
                       } else if (value == "delete") {
                         // delete and remove the item
-                        deleteById(id);
+                        deleteById(const Uuid());
                       }
                     }, itemBuilder: (context) {
                       return [
@@ -106,7 +107,7 @@ class _TodoListPageState extends State<TodoListPage> {
     fetchArtifact();
   }
 
-  Future<void> deleteById(int id) async {
+  Future<void> deleteById(Uuid id) async {
     final isSuccess = await ArtifactService.deleteById(id);
     if (isSuccess) {
       final filtered = items.where((element) => element['ID'] != id).toList();
