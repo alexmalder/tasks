@@ -11,7 +11,6 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-// @task need render single item by id[routing]
 class _HomeScreenState extends State<HomeScreen> {
   late List<Artifact> artifacts = [];
   late Artifact artifact;

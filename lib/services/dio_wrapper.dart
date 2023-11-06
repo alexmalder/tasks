@@ -5,7 +5,6 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uuid/uuid.dart';
 
-// @task need jwt token interceptor setter[api]
 class AppHttpClient {
   late Dio _dio;
   final String _traceId = const Uuid().v4().toString();

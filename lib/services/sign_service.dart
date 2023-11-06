@@ -3,7 +3,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:videos/models/SignInResponse.dart';
 import 'package:videos/services/dio_wrapper.dart';
 
-// @task need jwt token storage setter[api]
 class SignService {
   static Future<bool> signIn(Map body) async {
     //final apiUri = dotenv.env['API_URI'];

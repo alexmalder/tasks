@@ -13,7 +13,6 @@ class HomeDetailsScreen extends StatefulWidget {
   State<HomeDetailsScreen> createState() => _HomeDetailsScreen(id!);
 }
 
-// @task need id required parameter[widget]
 class _HomeDetailsScreen extends State<HomeDetailsScreen> {
   _HomeDetailsScreen(this.id);
   late String id;
