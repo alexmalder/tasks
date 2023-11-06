@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:videos/models/artifact.dart';
 import 'package:videos/services/artifact_service.dart';
 
@@ -10,10 +11,10 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-// @task need render list[widget]
 // @task need render single item by id[routing]
 class _HomeScreenState extends State<HomeScreen> {
   late List<Artifact> artifacts = [];
+  late Artifact artifact;
   bool isLoading = true;
 
   Future<void> fetchArtifacts() async {
@@ -57,31 +58,36 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: const EdgeInsets.all(8),
               itemBuilder: (context, index) {
                 final item = artifacts[index];
+                final id = artifacts[index].id;
                 // int id = item['ID'] as int;
                 return Card(
                   child: ListTile(
                     leading: CircleAvatar(child: Text('${index + 1}')),
                     title: Text(item.title),
                     subtitle: Text(item.link),
-                    trailing: PopupMenuButton(onSelected: (value) {
-                      if (value == "edit") {
-                        //navigateToEditPage(item);
-                      } else if (value == "delete") {
-                        // delete and remove the item
-                        //deleteById(const Uuid());
-                      }
-                    }, itemBuilder: (context) {
-                      return [
+                    trailing: PopupMenuButton(
+                      onSelected: (result){
+                        switch(result){
+                          case 0:
+                            context.go("/home/$id")
+                          ; break;
+                          case 1: context.go('/home/123'); break;
+                        }
+                      },
+                      itemBuilder: (context) => [
                         const PopupMenuItem(
-                          value: 'edit',
-                          child: Text('Edit'),
+                            value: 0,
+                            child: Text("Edit")
                         ),
                         const PopupMenuItem(
-                          value: 'delete',
-                          child: Text('Delete'),
-                        ),
-                      ];
-                    }),
+                            value: 1,
+                            child: Text("Delete")
+                        )
+                      ],
+                      icon: const Icon(
+                        Icons.settings,
+                      ),
+                    ),
                   ),
                 );
               },

@@ -1,4 +1,4 @@
-FROM cirrusci/flutter:3.7.7
+FROM mobiledevops/flutter-sdk-image:3.10.3
 
 WORKDIR /app
 

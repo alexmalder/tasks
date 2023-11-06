@@ -5,20 +5,24 @@ import 'package:videos/models/artifact.dart';
 import 'package:videos/services/artifact_service.dart';
 
 class HomeDetailsScreen extends StatefulWidget {
-  const HomeDetailsScreen({super.key});
+  final String? id;
+  const HomeDetailsScreen({super.key, this.id});
 
   @override
-  State<HomeDetailsScreen> createState() => _HomeDetailsScreen();
+  // ignore: no_logic_in_create_state
+  State<HomeDetailsScreen> createState() => _HomeDetailsScreen(id!);
 }
 
 // @task need id required parameter[widget]
 class _HomeDetailsScreen extends State<HomeDetailsScreen> {
+  _HomeDetailsScreen(this.id);
+  late String id;
   late Future<Artifact> futureArtifact;
 
   @override
   void initState() {
     super.initState();
-    futureArtifact = ArtifactService.fetchOne(const Uuid());
+    futureArtifact = ArtifactService.fetchOne(id);
   }
 
   @override

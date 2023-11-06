@@ -35,11 +35,15 @@ class ArtifactService {
     }
   }
 
-  static Future<Artifact> fetchOne(Uuid uuid) async {
-    final url = '/v1/feed/$uuid';
-    final response = await AppHttpClient().dio.get(url);
+  static Future<Artifact> fetchOne(String id) async {
+    final url = '/api/v1/feed/$id';
+    final prefs = await SharedPreferences.getInstance();
+    final accessToken = prefs.getString('accessToken');
+    final response = await AppHttpClient().dio.get(url, options: Options(
+      headers: {"Authorization": "Bearer ${accessToken!}"},
+    ));
     if (response.statusCode == 200) {
-      return Artifact.fromJson(response.data);
+      return Artifact.fromJson(response.data['data']);
     } else {
       throw Exception('Failed to load data');
     }

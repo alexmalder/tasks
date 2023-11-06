@@ -39,7 +39,9 @@ class AppRouter {
             routes: [
               GoRoute(
                 path: Routes.homeDetailsNamedPage,
-                builder: (context, state) => const HomeDetailsScreen(),
+                builder: (context, state) => HomeDetailsScreen(
+                    id: state.pathParameters['id']
+                ),
               ),
             ],
           ),
