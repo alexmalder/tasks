@@ -17,6 +17,9 @@ class NavigationCubit extends Cubit<NavigationState> {
       case 2:
         emit(const NavigationState(bottomNavItems: Routes.settingsNamedPage,index:  2));
         break;
+      case 3:
+        emit(const NavigationState(bottomNavItems: Routes.signInPage,index:  3));
+        break;
     }
   }
 }

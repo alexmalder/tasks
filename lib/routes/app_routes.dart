@@ -1,13 +1,14 @@
 import 'package:videos/controller/navigation_cubit.dart';
 import 'package:videos/screens//home_details_screen.dart';
 import 'package:videos/screens/home_screen.dart';
-import 'package:videos/screens/main_screen.dart';
+import 'package:videos/navigation/main_screen.dart';
 import 'package:videos/screens/profile_details_screen.dart';
 import 'package:videos/screens/profile_screen.dart';
 import 'package:videos/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:videos/screens/sign_in_screen.dart';
 import '../core/constants.dart';
 import '../../screens/not_found_page.dart';
 
@@ -63,6 +64,13 @@ class AppRouter {
             pageBuilder: (context, state) =>
             const NoTransitionPage(
               child: SettingScreen(),
+            ),
+          ),
+          GoRoute(
+            path: Routes.signInPage,
+            pageBuilder: (context, state) =>
+            const NoTransitionPage(
+              child: SignInPage(),
             ),
           ),
         ],

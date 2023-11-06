@@ -4,8 +4,16 @@ import 'package:videos/models/SignInResponse.dart';
 import 'package:videos/services/dio_wrapper.dart';
 
 class SignService {
+  static Future<bool> loadUserInfo() async {
+    const url = '/api/v1/keycloak';
+    final prefs = await SharedPreferences.getInstance();
+    final accessToken = prefs.getString('accessToken');
+    final response = await AppHttpClient().dio.post(url, options: Options(
+      headers: {"Authorization": "Bearer ${accessToken!}"},
+    ));
+    return response.statusCode == 200;
+  }
   static Future<bool> signIn(Map body) async {
-    //final apiUri = dotenv.env['API_URI'];
     const url = '/api/v1/auth/sign-in';
     var formData = {
       "username": body['username'] as String,

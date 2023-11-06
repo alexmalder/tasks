@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:videos/models/artifact.dart';
 import 'package:videos/services/artifact_service.dart';
 
@@ -17,14 +18,10 @@ class _HomeScreenState extends State<HomeScreen> {
   bool isLoading = true;
 
   Future<void> fetchArtifacts() async {
+    Sentry.captureMessage("Artifacts loaded");
     final response = await ArtifactService.fetch();
-    if (response != null) {
-      setState(() {
-        artifacts = response;
-      });
-    } else {
-    }
     setState(() {
+      artifacts = response;
       isLoading = false;
     });
   }
