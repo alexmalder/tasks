@@ -7,13 +7,16 @@
 - [ ] add profile details from api
 - [ ] add fake settings from api
 
-## workaround
+## microtasks
 
-- home screen has list
-- home details has item
-- settings has sign-in page
-- alert when sign-in successed
-- some pages and redirects
+- [ ] need jwt token storage setter[api]
+- [ ] need jwt token interceptor setter[api]
+- [ ] need render list[widget]
+- [ ] encapsulate sign-in page[routing]
+- [ ] hide password form data[widget]
+- [ ] need id required parameter[widget]
+- [ ] need render single item by id[routing]
+- [ ] test toJson method[model]
 
 ## Authors
 

@@ -1,15 +1,15 @@
 import 'package:videos/controller/navigation_cubit.dart';
-import 'package:videos/presentation/home/home_details_screen.dart';
-import 'package:videos/presentation/home/home_screen.dart';
-import 'package:videos/presentation/main_screen.dart';
-import 'package:videos/presentation/profile/profile_details_screen.dart';
-import 'package:videos/presentation/profile/profile_screen.dart';
-import 'package:videos/presentation/settings/settings_screen.dart';
+import 'package:videos/screens//home_details_screen.dart';
+import 'package:videos/screens/home_screen.dart';
+import 'package:videos/screens/main_screen.dart';
+import 'package:videos/screens/profile_details_screen.dart';
+import 'package:videos/screens/profile_screen.dart';
+import 'package:videos/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import '../../core/utils/constants.dart';
-import 'screens/not_found_page.dart';
+import '../core/constants.dart';
+import '../../screens/not_found_page.dart';
 
 class AppRouter {
 
@@ -39,7 +39,9 @@ class AppRouter {
             routes: [
               GoRoute(
                 path: Routes.homeDetailsNamedPage,
-                builder: (context, state) => const HomeDetailsScreen(),
+                builder: (context, state) => HomeDetailsScreen(
+                    id: state.pathParameters['id']
+                ),
               ),
             ],
           ),

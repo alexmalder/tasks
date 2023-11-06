@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart'; // ignore: depend_on_referenced_packages
 import 'package:equatable/equatable.dart';
-import '../core/utils/constants.dart';
+import '../core/constants.dart';
 part 'navigation_state.dart';
 
 class NavigationCubit extends Cubit<NavigationState> {
