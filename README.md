@@ -9,14 +9,14 @@
 
 ## microtasks
 
-- [ ] need jwt token storage setter[api]
-- [ ] need jwt token interceptor setter[api]
-- [ ] need render list[widget]
-- [ ] encapsulate sign-in page[routing]
-- [ ] hide password form data[widget]
-- [ ] need id required parameter[widget]
-- [ ] need render single item by id[routing]
+- [ ] add global state for navigation[state]
 - [ ] test toJson method[model]
+
+## merge request plan
+
+```bash
+sign-in -> state-manager -> master
+```
 
 ## Authors
 
