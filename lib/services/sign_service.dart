@@ -23,7 +23,7 @@ class SignService {
     };
     final response = await AppHttpClient().dio.post(url, data: formData, options: Options(
       validateStatus: (status) {
-        return status! < 415 && status! != 400;
+        return status! < 415 && status != 400;
       },
     ));
     if (response.statusCode == 200) {

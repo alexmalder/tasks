@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:videos/routes/app_routes.dart';
-import 'package:videos/counter.dart';
+import 'package:videos/state-example/form_widgets.dart';
 
 Future main() async {
   await dotenv.load(fileName: ".env");
@@ -21,7 +21,7 @@ Future main() async {
       options.enableWindowMetricBreadcrumbs = true;
       options.environment = "production";
     },
-    appRunner: () => runApp(const CounterExample()),
+    appRunner: () => runApp(const MyApp()),
   );
 }
 
@@ -31,6 +31,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    return MaterialApp(
+      title: "Mobile",
+        theme: ThemeData.dark(),
+        home: const FormExample()
+    );
+    /*
     return MaterialApp.router(
       routeInformationProvider: AppRouter.router.routeInformationProvider,
       routeInformationParser: AppRouter.router.routeInformationParser,
@@ -42,13 +48,6 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: Colors.black,
           colorScheme: const ColorScheme.dark(),
       ),
-    );
-
-    /*
-    return MaterialApp(
-      title: 'Mobile',
-      theme: ThemeData.dark(),
-      home: const TodoListPage(),
     );
     */
   }

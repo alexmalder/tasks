@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
-import 'package:uuid/uuid.dart';
 import 'package:videos/models/artifact.dart';
 import 'package:videos/services/artifact_service.dart';
 

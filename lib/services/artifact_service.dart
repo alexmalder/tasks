@@ -24,7 +24,6 @@ class ArtifactService {
     if (response.statusCode == 200) {
       //final Map<String, dynamic> responseDecoded = response.data;
       //final List<Artifact> data = responseDecoded['data'];
-      List<Artifact> listArtifact;
       return (response.data['data'] as List)
           .map((x) => Artifact.fromJson(x))
           .toList();

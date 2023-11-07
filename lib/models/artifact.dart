@@ -1,5 +1,3 @@
-import 'package:uuid/uuid.dart';
-
 class Artifact {
   final String id;
   final String accountId;

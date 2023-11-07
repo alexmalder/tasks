@@ -124,15 +124,9 @@ class _TodoListPageState extends State<TodoListPage> {
 
   Future<void> fetchArtifact() async {
     final response = await ArtifactService.fetch();
-    if (response != null) {
-      setState(() {
-        items = response;
-        //if (response.isNotEmpty) { } else { items = []; }
-      });
-    } else {
-      // ignore: use_build_context_synchronously
-      showErrorMessage(context, message: 'Something went wrong');
-    }
+    setState(() {
+      items = response;
+    });
     setState(() {
       isLoading = false;
     });
