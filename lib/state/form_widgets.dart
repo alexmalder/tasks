@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
-import 'form_store.dart';
+import 'package:videos/state/form_store.dart';
 
 class FormExample extends StatefulWidget {
   const FormExample({Key? key}) : super(key: key);

@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:mobx/mobx.dart';
 import 'package:validators2/validators2.dart';
 
-part '../form_store.g.dart';
+part 'form_store.g.dart';
 
 class CustomColor extends Color {
   CustomColor(int value) : super(value);

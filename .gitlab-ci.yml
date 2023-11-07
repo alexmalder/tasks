@@ -1,11 +1,11 @@
 ---
 stages:
   - build
-  - localinstall
+  -
 
 build:apk:
   stage: build
-  image: cirrusci/flutter:3.7.7
+  image: mobiledevops/flutter-sdk-image:3.10.3
   script:
     - flutter pub get
     - flutter build apk --release
