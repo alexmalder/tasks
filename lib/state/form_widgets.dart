@@ -54,17 +54,10 @@ class _FormExampleState extends State<FormExample> {
               ),
               Observer(
                 builder: (_) => TextField(
-                  onChanged: (value) => store.email = value,
-                  decoration: InputDecoration(
-                      labelText: 'Email',
-                      hintText: 'Enter your email address',
-                      errorText: store.error.email
-                  ),
-                ),
-              ),
-              Observer(
-                builder: (_) => TextField(
                   onChanged: (value) => store.password = value,
+                  obscureText: true,
+                  enableSuggestions: false,
+                  autocorrect: false,
                   decoration: InputDecoration(
                       labelText: 'Password',
                       hintText: 'Set a password',

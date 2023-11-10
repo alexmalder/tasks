@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:mobx/mobx.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:validators2/validators2.dart';
 
 part 'form_store.g.dart';
@@ -21,9 +22,6 @@ abstract class _FormStore with Store {
   String name = '';
 
   @observable
-  String email = '';
-
-  @observable
   String password = '';
 
   @observable
@@ -40,7 +38,6 @@ abstract class _FormStore with Store {
   void setupValidations() {
     _disposers = [
       reaction((_) => name, validateUsername),
-      reaction((_) => email, validateEmail),
       reaction((_) => password, validatePassword)
     ];
   }
@@ -74,11 +71,6 @@ abstract class _FormStore with Store {
     error.password = isNull(value) || value.isEmpty ? 'Cannot be blank' : null;
   }
 
-  @action
-  void validateEmail(String value) {
-    error.email = isEmail(value) ? null : 'Not a valid email';
-  }
-
   Future<bool> checkValidUsername(String value) async {
     await Future.delayed(const Duration(seconds: 1));
 
@@ -93,7 +85,6 @@ abstract class _FormStore with Store {
 
   void validateAll() {
     validatePassword(password);
-    validateEmail(email);
     validateUsername(name);
   }
 }
@@ -106,11 +97,8 @@ abstract class _FormErrorState with Store {
   String? username;
 
   @observable
-  String? email;
-
-  @observable
   String? password;
 
   @computed
-  bool get hasErrors => username != null || email != null || password != null;
+  bool get hasErrors => username != null || password != null;
 }
