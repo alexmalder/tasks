@@ -11,6 +11,7 @@ class Routes{
   static const settingsNamedPage = '/settings';
   static const signInPage = '/sign-in';
   static const info = '/info';
+  static const mobxTest = '/mobxTest';
   //static profileNamedPage([String? name]) => '/${name ?? ':profile'}';
   static Widget errorWidget(BuildContext context, GoRouterState state) => const NotFoundScreen();
 }

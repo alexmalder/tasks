@@ -52,6 +52,11 @@ class MainScreen extends StatelessWidget {
           icon: const Icon(Icons.info),
           label: 'Info',
         ),
+        NamedNavigationBarItemWidget(
+            initialLocation: Routes.mobxTest,
+            icon: const Icon(Icons.add_business),
+            label: "Mobx Test"
+        )
       ];
     }
     return myTabs;
