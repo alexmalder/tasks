@@ -5,34 +5,22 @@ import 'package:videos/models/account.dart';
 import 'package:videos/services/sign_service.dart';
 import 'package:quickalert/quickalert.dart';
 
-class SignInPage extends StatefulWidget {
+class SignInScreen extends StatefulWidget {
   final Account? account;
 
-  const SignInPage({super.key, this.account});
+  const SignInScreen({super.key, this.account});
 
   @override
-  State<SignInPage> createState() => _SignInPage();
+  State<SignInScreen> createState() => _SignInScreen();
 }
 
-class _SignInPage extends State<SignInPage> {
+class _SignInScreen extends State<SignInScreen> {
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-  }
-
-  Map get body {
-    final username = usernameController.text;
-    final password = passwordController.text;
-    return {
-      "username": username,
-      "password": password,
-    };
-  }
-
-  Future<void> submitData() async {
   }
 
   @override
@@ -59,7 +47,7 @@ class _SignInPage extends State<SignInPage> {
           const SizedBox(height: 20),
           ElevatedButton(
             onPressed: () async {
-              final isSuccess = SignService.signIn(body);
+              final isSuccess = SignService.signIn(usernameController.text, passwordController.text);
               isSuccess.then((success) => {
                 if (success == false) {
                   QuickAlert.show(

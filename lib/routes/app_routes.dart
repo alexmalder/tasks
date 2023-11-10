@@ -8,10 +8,9 @@ import 'package:videos/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:videos/screens/sign_in_screen.dart';
 import '../core/constants.dart';
 import '../screens/not_found_page.dart';
-import '../state/form_widgets.dart';
+import '../screens/sign_in_screen.dart';
 
 class AppRouter {
 
@@ -61,13 +60,6 @@ class AppRouter {
             ],
           ),
           GoRoute(
-            path: Routes.mobxTest,
-            pageBuilder: (context, state) =>
-            const NoTransitionPage(
-              child: FormExample(),
-            ),
-          ),
-          GoRoute(
             path: Routes.settingsNamedPage,
             pageBuilder: (context, state) =>
             const NoTransitionPage(
@@ -78,7 +70,7 @@ class AppRouter {
             path: Routes.signInPage,
             pageBuilder: (context, state) =>
             const NoTransitionPage(
-              child: SignInPage(),
+              child: SignInScreen(),
             ),
           ),
         ],
