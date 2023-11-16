@@ -4,7 +4,7 @@ stages:
 
 build:apk:
   stage: build
-  image: registry.gitlab.com/devopsfaith/flutter-docker:0.1
+  image: vnmntn/flutter:0.1
   script:
     - flutter pub get
     - flutter build apk --release
