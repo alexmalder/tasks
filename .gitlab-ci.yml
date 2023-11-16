@@ -1,11 +1,10 @@
 ---
 stages:
   - build
-  -
 
 build:apk:
   stage: build
-  image: mobiledevops/flutter-sdk-image:3.10.3
+  image: registry.gitlab.com/devopsfaith/flutter-docker:0.1
   script:
     - flutter pub get
     - flutter build apk --release
@@ -21,7 +20,7 @@ build:web:
   image: docker:dind
   script:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-    - docker build . -t $CI_REGISTRY/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME:$CI_PIPELINE_IID
+    - docker build -f ./web/Dockerfile . -t $CI_REGISTRY/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME:$CI_PIPELINE_IID
     - docker push $CI_REGISTRY/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME:$CI_PIPELINE_IID
   tags:
     - docker

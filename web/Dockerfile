@@ -1,4 +1,4 @@
-FROM cirrusci/flutter:3.7.7 as build
+FROM registry.gitlab.com/devopsfaith/flutter-docker:0.1 as build
 WORKDIR /app
 COPY . /app
 
