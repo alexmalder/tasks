@@ -37,7 +37,7 @@ class AppRouter {
             const NoTransitionPage(
               child: HomeScreen(),
             ),
-            routes: [
+            routes: [w
               GoRoute(
                 path: Routes.homeDetailsNamedPage,
                 builder: (context, state) => HomeDetailsScreen(
