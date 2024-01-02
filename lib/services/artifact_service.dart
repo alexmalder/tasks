@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+//import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uuid/uuid.dart';
 import 'package:videos/models/artifact.dart';
 import 'package:videos/services/dio_wrapper.dart';
@@ -15,11 +15,11 @@ class ArtifactService {
 
   static Future<List<Artifact>> fetch() async {
     const url = '/api/v1/feed';
-    final prefs = await SharedPreferences.getInstance();
-    final accessToken = prefs.getString('accessToken');
+    //final prefs = await SharedPreferences.getInstance();
+    //final accessToken = prefs.getString('accessToken');
 
     final response = await AppHttpClient().dio.get(url, options: Options(
-      headers: {"Authorization": "Bearer ${accessToken!}"},
+      //headers: {"Authorization": "Bearer ${accessToken!}"},
     ));
     if (response.statusCode == 200) {
       //final Map<String, dynamic> responseDecoded = response.data;
@@ -37,10 +37,10 @@ class ArtifactService {
 
   static Future<Artifact> fetchOne(String id) async {
     final url = '/api/v1/feed/$id';
-    final prefs = await SharedPreferences.getInstance();
-    final accessToken = prefs.getString('accessToken');
+    //final prefs = await SharedPreferences.getInstance();
+    //final accessToken = prefs.getString('accessToken');
     final response = await AppHttpClient().dio.get(url, options: Options(
-      headers: {"Authorization": "Bearer ${accessToken!}"},
+      //headers: {"Authorization": "Bearer ${accessToken!}"},
     ));
     if (response.statusCode == 200) {
       return Artifact.fromJson(response.data['data']);
