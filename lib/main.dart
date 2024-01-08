@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_launcher_icons/constants.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:videos/routes/app_routes.dart';
 
 Future main() async {
   await dotenv.load(fileName: ".env");
+  /*
   await SentryFlutter.init(
     (options) {
       options.dsn = dotenv.env['SENTRY_DSN'];
@@ -22,6 +24,8 @@ Future main() async {
     },
     appRunner: () => runApp(const MyApp()),
   );
+  */
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
